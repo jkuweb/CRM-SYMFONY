@@ -1,0 +1,62 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block head_js %}
+    {{ parent() }}
+    <script src="{{ asset('js/embed_form.js') }}"></script>
+{% endblock %}
+
+{% block wrapper %}
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+
+    <div class="row">
+        <div class="col-xl-10">
+            <!-- ============================================================== -->
+            <!-- pageheader  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header" id="top">
+                        <h2 class="pageheader-title">Cliente Agregar </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- basic form  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="section-block" id="basicform">
+                        <h3 class="section-title">Basic Form Elements</h3>
+                        <p>Use custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-header">Basic Form</h5>
+                        <div class="card-body">
+                            {{ form_start(form) }}
+                            <img src="{{ asset('uploads/cliente/' ~  image ) }}" class="img-fluid img-thumbnail w-25" alt="Foto de perfil">
+                            <a href="{{ path("cliente_eliminar_imagen", {id: cliente}) }}">Eliminar</a>
+                            {{ form_row(form.nombre, {'attr': {'class': 'task_field'}}) | spaceless}}
+                            {{ form_row(form.imageFile)}}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end basic form  -->
+            <!-- ============================================================== -->
+
+
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+{% endblock wrapper %}
+
+

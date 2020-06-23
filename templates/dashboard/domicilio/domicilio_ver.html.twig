@@ -1,0 +1,69 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% block wrapper %}
+    <!-- ============================================================== -->
+    <!-- pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h2 class="pageheader-title">Domicilio</h2>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end pageheader -->
+    <!-- ============================================================== -->
+
+    <div class="row">
+        <!-- ============================================================== -->
+        <!-- responsive table -->
+        <!-- ============================================================== -->
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Cliente</h5>
+                <div class="card-body">
+                    <div class="table-responsive ">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">calle</th>
+                                <th scope="col">Portal</th>
+                                <th scope="col">Piso</th>
+                                <th scope="col">Escalera</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Provincia</th>
+                                <th scope="col">C.P.</th>
+                                <th scope="col">&nbsp;</th>
+                                <th scope="col">&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{ domicilio.calle }}</td>
+                                <td>{{ domicilio.portal }}</td>
+                                <td>{{ domicilio.piso }}</td>
+                                <td>{{ domicilio.escalera }}</td>
+                                <td>{{ domicilio.ciudad }}</td>
+                                <td>{{ domicilio.provincia }}</td>
+                                <td>{{ domicilio.zip }}</td>
+                                <td><a href="{{ path("cliente_ver", {id: clienteId}) }}">Perfil</a></td>
+                                <td><a href="{{ path("domicilio_editar", {id: domicilio.id}) }}">Editar</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end responsive table -->
+        <!-- ============================================================== -->
+    </div>
+</div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+</div>
+{% endblock wrapper%}

@@ -1,0 +1,85 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block head_js %}
+    {{ parent() }}
+    <script src="{{ asset('js/embed_form.js') }}"></script>
+{% endblock %}
+
+{% block wrapper %}
+<!-- ============================================================== -->
+<!-- wrapper  -->
+<!-- ============================================================== -->
+
+        <div class="row">
+            <div class="col-xl-10">
+                <!-- ============================================================== -->
+                <!-- pageheader  -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header" id="top">
+                            <h2 class="pageheader-title">Cliente Agregar </h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- basic form  -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="section-block" id="basicform">
+                            <h3 class="section-title">Basic Form Elements</h3>
+                            <p>Use custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
+                        </div>
+                        <div class="card">
+                            <h5 class="card-header">Basic Form</h5>
+                            <div class="card-body">
+                                {{ form_start(form) }}
+                                <label>
+                                    Nombre:
+                                    {{ form_row(form.nombre, {'attr': {
+                                        'class': 'task_field',
+                                        'aria-labelledby': 'nombre'
+                                    }})}}
+                                    <div class="file-field">
+                                        <div class="btn btn-sm">
+
+                                            {{ form_row(form.imageFile)}}
+                                        </div>
+
+                                    {{ form_row(form.dni)}}
+                                    {{ form_row(form.domicilio)}}
+                                </label>
+                                <div class="col-sm-8 col-sm-offset-2" id="exp_list" data-prototype="{{ form_widget(form.datosDeContacto.vars.prototype)|e('html_attr') }}">
+                                    {% for datodecontacto in form.datosDeContacto %}
+                                        <div class="panel panel-warning">
+                                            <div class="panel-heading">
+                                                <strong>Datos de Contacto</strong>
+                                            </div>
+                                            <div class="panel-body">
+                                                {{ form_row(datodecontacto.email) }}
+                                                {{ form_row(datodecontacto.telefono) }}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end basic form  -->
+                <!-- ============================================================== -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ============================================================== -->
+<!-- end main wrapper -->
+<!-- ============================================================== -->
+{% endblock wrapper %}

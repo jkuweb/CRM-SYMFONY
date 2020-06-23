@@ -1,0 +1,127 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% block wrapper %}
+            <!-- ============================================================== -->
+            <!-- pageheader -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">Ficha del Cliente</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end pageheader -->
+            <!-- ============================================================== -->
+
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- responsive table -->
+                <!-- ============================================================== -->
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Cliente</h5>
+                        <div class="card-body">
+                            <div class="table-responsive ">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Dni</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>{{ cliente.nombre }}</td>
+                                        <td>{{ cliente.dni }}</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end responsive table -->
+                <!-- ============================================================== -->
+            </div>
+
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- responsive table -->
+                <!-- ============================================================== -->
+                <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Domicilio</h5>
+                        <div class="card-body">
+                            <div class="table-responsive ">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">calle</th>
+                                        <th scope="col">Portal</th>
+                                        <th scope="col">Piso</th>
+                                        <th scope="col">Escalera</th>
+                                        <th scope="col">Ciudad</th>
+                                        <th scope="col">Provincia</th>
+                                        <th scope="col">C.P.</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ domicilio.calle }}</td>
+                                        <td>{{ domicilio.portal }}</td>
+                                        <td>{{ domicilio.piso }}</td>
+                                        <td>{{ domicilio.escalera }}</td>
+                                        <td>{{ domicilio.ciudad }}</td>
+                                        <td>{{ domicilio.provincia }}</td>
+                                        <td>{{ domicilio.zip }}</td>
+                                        <td>
+                                            <a href="{{ path('domicilio_editar', {id: cliente.id}) }}">Editar Domicilio</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end responsive table -->
+                <!-- ============================================================== -->
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">Cliente</h5>
+                        <div class="card-body">
+                            <div class="table-responsive ">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Teléfono</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for datodecontacto in cliente.datosdecontacto %}
+                                        <tr>
+                                            <td>{{ (datodecontacto.email in datodecontacto) ? : 'no especificado' }}</td>
+                                            <td>{{ (datodecontacto.telefono in datodecontacto) ? : 'no especificado' }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+{% endblock wrapper%}
