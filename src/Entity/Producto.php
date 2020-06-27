@@ -27,6 +27,11 @@ class Producto
      */
     private $precio;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $imagenes = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,4 +60,22 @@ class Producto
 
         return $this;
     }
+
+    public function getImagenes(): ?array
+    {
+        return $this->imagenes;
+    }
+
+    public function setImagenes(?array $imagenes): self
+    {
+        $this->imagenes = $imagenes;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getDenominacion();
+    }
+
 }

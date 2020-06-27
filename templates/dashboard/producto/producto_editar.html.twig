@@ -1,0 +1,72 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block head_js %}
+    {{ parent() }}
+    <script src="{{ asset('js/embed_form.js') }}"></script>
+    <script src="{{ asset('js/agregar.js') }}"></script>
+{% endblock %}
+
+{% block wrapper %}
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+
+    <div class="row">
+        <div class="col-xl-10">
+            <!-- ============================================================== -->
+            <!-- pageheader  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header" id="top">
+                        <h2 class="pageheader-title">Agregar Producto</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- basic form  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="section-block" id="basicform">
+                        <h3 class="section-title">Basic Form Elements</h3>
+                        <p>Use custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-header">Basic Form</h5>
+                        <div class="card-body">
+                            {{ form_start(form) }}
+
+                            <div id="padre">
+                                <p>Añadir Imágen</p>
+                                <div class="form-group hijo">
+                                    {{ form_row(form.imagenes) }}
+                                    <div>
+                                        <button type="button" onclick="agregar()">Agregar</button>
+                                        <button type="button" onclick="eliminar(this)">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for imagen in imagenes %}
+                                <img src="{{ asset('uploads/cliente/' ~ imagen) }}" alt="">
+                            {% endfor %}
+                            {{ form_widget(form) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end basic form  -->
+            <!-- ============================================================== -->
+
+
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+{% endblock wrapper %}

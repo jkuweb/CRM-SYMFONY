@@ -1,0 +1,68 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% block wrapper %}
+    <!-- ============================================================== -->
+    <!-- pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h2 class="pageheader-title">Lista de Productos</h2>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end pageheader -->
+    <!-- ============================================================== -->
+
+    <div class="row">
+        <!-- ============================================================== -->
+        <!-- responsive table -->
+        <!-- ============================================================== -->
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Productos</h5>
+                <div class="card-body">
+                    <div class="table-responsive ">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for producto in productos %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('producto_ver', {id: producto.id}) }}">{{ producto.id }}</a>
+                                    </td>
+                                    <td>{{ producto.denominacion }}</td>
+                                    <td>{{ producto.precio }}</td>
+                                    <td>
+                                        <a href="{{ path('producto_ver', {id: producto.id}) }}">Ver</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('producto_editar', {id: producto.id}) }}">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('producto_eliminar', {id: producto.id}) }}">Eliminar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end responsive table -->
+        <!-- ============================================================== -->
+    </div>
+    </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+{% endblock wrapper%}

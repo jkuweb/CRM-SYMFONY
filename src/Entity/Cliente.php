@@ -50,9 +50,16 @@ class Cliente
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Pedido::class, mappedBy="cliente", orphanRemoval=true)
+     */
+    private $pedidos;
+
+
     public function __construct()
     {
         $this->datosDeContacto = new ArrayCollection();
+        $this->pedidos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -135,6 +142,42 @@ class Cliente
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
+    /**
+     * @return Collection|Pedido[]
+     */
+    public function getPedidos(): Collection
+    {
+        return $this->pedidos;
+    }
+
+    public function addPedido(Pedido $pedido): self
+    {
+        if (!$this->pedidos->contains($pedido)) {
+            $this->pedidos[] = $pedido;
+            $pedido->setCliente($this);
+        }
+
+        return $this;
+    }
+
+    public function removePedido(Pedido $pedido): self
+    {
+        if ($this->pedidos->contains($pedido)) {
+            $this->pedidos->removeElement($pedido);
+            // set the owning side to null (unless already changed)
+            if ($pedido->getCliente() === $this) {
+                $pedido->setCliente(null);
+            }
+        }
 
         return $this;
     }

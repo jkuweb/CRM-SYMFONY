@@ -10,10 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/cliente")
+ */
 class ClienteAdminController extends AbstractController
 {
     /**
-     * @Route("/cliente/agregar", name="cliente_agregar")
+     * @Route("/agregar", name="cliente_agregar")
      */
     public function agregar(Request $request, FileUploader $fileUploader)
     {
@@ -43,7 +46,7 @@ class ClienteAdminController extends AbstractController
     }
 
     /**
-     * @Route("/cliente/ver/{id}", name="cliente_ver", methods={"GET"})
+     * @Route("/ver/{id}", name="cliente_ver", methods={"GET"})
      */
     public function ver(Cliente $cliente)
     {
@@ -54,7 +57,7 @@ class ClienteAdminController extends AbstractController
     }
 
     /**
-     * @Route("/cliente/editar/{id}", name="cliente_editar")
+     * @Route("/editar/{id}", name="cliente_editar")
      */
     public function editar(Request $request, Cliente $cliente, FileUploader $fileUploader)
     {
@@ -83,7 +86,7 @@ class ClienteAdminController extends AbstractController
     }
 
     /**
-     * @Route("/cliente/listar", name="cliente_listar")
+     * @Route("/listar", name="cliente_listar")
      */
     public function listar(ClienteRepository $clienteRepository)
     {
@@ -95,7 +98,7 @@ class ClienteAdminController extends AbstractController
     }
 
     /**
-     * @Route("/cliente/eliminar/{id}", name="cliente_eliminar")
+     * @Route("/eliminar/{id}", name="cliente_eliminar")
      */
     public function eliminar(Cliente $cliente, ClienteRepository $clienteRepository)
     {

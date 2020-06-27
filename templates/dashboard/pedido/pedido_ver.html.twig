@@ -1,0 +1,78 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% block wrapper %}
+    <!-- ============================================================== -->
+    <!-- pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h2 class="pageheader-title">Ficha del Producto</h2>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end pageheader -->
+    <!-- ============================================================== -->
+
+    <div class="row">
+        <!-- ============================================================== -->
+        <!-- responsive table -->
+        <!-- ============================================================== -->
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Producto</h5>
+                <div class="card-body">
+                    <div class="table-responsive ">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Pedido id</th>
+                                <th scope="col">Cliente</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ pedido.id }}</td>
+                                <td>{{ pedido.cliente }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive ">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Producto ID</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for producto in pedido.productoPedidos %}
+                                    <tr>
+                                        <th scope="row">{{ producto.producto.id }}</th>
+                                        <td>{{ producto.producto}}</td>
+                                        <td>{{ producto.producto.precio}}</td>
+                                        <td>{{ producto.cantidad}}</td>
+                                        <td>{{ producto.total}}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end responsive table -->
+        <!-- ============================================================== -->
+    </div>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+{% endblock wrapper%}

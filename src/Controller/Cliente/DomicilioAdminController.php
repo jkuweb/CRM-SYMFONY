@@ -10,10 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/domicilio")
+ */
 class DomicilioAdminController extends AbstractController
 {
     /**
-     * @Route("domicilio/ver/{id}", name="domicilio_ver")
+     * @Route("/ver/{id}", name="domicilio_ver")
      */
     public function ver(Cliente $cliente)
     {
@@ -26,7 +29,7 @@ class DomicilioAdminController extends AbstractController
     }
 
     /**
-     * @Route("/domicilio/editar/{id}", name="domicilio_editar")
+     * @Route("/editar/{id}", name="domicilio_editar")
      */
     public function editar(Cliente $cliente, Request $request)
     {
